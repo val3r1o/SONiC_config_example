@@ -1,5 +1,4 @@
-# SONiC </br>
-(Dell Enterprise SONiC) 4.0.x </br>
+# SONiC 4.0.x </br> (Dell Enterprise SONiC) </br>
 Test configuration follow best practice </br>
 
 # ACCESS
