@@ -1,6 +1,8 @@
 # SONiC 4.0.x </br> (Dell Enterprise SONiC) </br>
 Test configuration follow best practice </br>
 
+# note: DCI still on going
+
 # ACCESS
 Switch pair with MCLAG </br>
 LAG ports for vServer attached trunk ports </br>
