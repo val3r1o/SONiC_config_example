@@ -22,4 +22,4 @@ MTU aligned to 9216 all-over-the fabric and hosts </br>
 L3 interface towards external router for different VRF for route type 5 termination </br>
 L3 VLAN interface for external BGP peering used to "emulate" NSX-T type of attach </br>
 
-![Fabric](https://user-images.githubusercontent.com/20860769/204854875-4a82f925-241a-43ed-913f-43d617a11bee.png)
+![Fabric](https://user-images.githubusercontent.com/20860769/205619162-3f573377-3737-4d34-b730-9896fc0ad489.png)
