@@ -195,28 +195,26 @@ interface Management 0
  speed 1000
 !
 interface Eth1/1
- description Leaf01
+ description Leaf03
  mtu 9216
  speed 25000
  no shutdown
  ipv6 enable
 !
 interface Eth1/2
- description Leaf02
+ description Leaf04
  mtu 9216
  speed 25000
  no shutdown
  ipv6 enable
 !
 interface Eth1/3
- description Border01
  mtu 9216
  speed 25000
  no shutdown
  ipv6 enable
 !
 interface Eth1/4
- description Border02
  mtu 9216
  speed 25000
  no shutdown

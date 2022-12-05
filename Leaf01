@@ -553,7 +553,6 @@ router bgp 4200065001 vrf Vrf-tenant1
  address-family ipv4 unicast
   redistribute connected 
   maximum-paths 16
-  maximum-paths ibgp 1
  !
  address-family l2vpn evpn
   advertise ipv4 unicast
@@ -566,7 +565,6 @@ router bgp 4200065001 vrf Vrf-tenant2
  address-family ipv4 unicast
   redistribute connected 
   maximum-paths 16
-  maximum-paths ibgp 1
  !
  address-family l2vpn evpn
   advertise ipv4 unicast

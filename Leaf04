@@ -1,12 +1,12 @@
-Leaf02# show running-configuration | no-more 
+Leaf04# show running-configuration | no-more 
 !
-ip load-share hash ipv4 ipv4-src-ip
 ip load-share hash ipv4 ipv4-dst-ip
+ip load-share hash ipv4 ipv4-src-ip
 ip load-share hash ipv4 ipv4-ip-proto
 ip load-share hash ipv4 ipv4-l4-src-port
 ip load-share hash ipv4 ipv4-l4-dst-port
-ip load-share hash ipv6 ipv6-dst-ip
 ip load-share hash ipv6 ipv6-src-ip
+ip load-share hash ipv6 ipv6-dst-ip
 ip load-share hash ipv6 ipv6-next-hdr
 ip load-share hash ipv6 ipv6-l4-dst-port
 ip load-share hash ipv6 ipv6-l4-src-port
@@ -221,11 +221,11 @@ interface Vlan3002
 !
 interface Loopback 0
  description router-id
- ip address 10.0.2.2/32
+ ip address 10.0.3.2/32
 !
 interface Loopback 1
  description Lvtep1
- ip address 10.10.10.1/32
+ ip address 10.10.10.3/32
 !
 interface PortChannel 1
  description vHost1
@@ -278,15 +278,13 @@ interface Eth1/4
  shutdown
 !
 interface Eth1/5
- description Spine
- mtu 9216
+ mtu 9100
  speed 25000
  no shutdown
  ipv6 enable
 !
 interface Eth1/6
- description Spine
- mtu 9216
+ mtu 9100
  speed 25000
  no shutdown
  ipv6 enable
@@ -545,7 +543,7 @@ interface Eth1/56
  speed 100000
  shutdown
 !
-router bgp 4200065001 vrf Vrf-tenant1
+router bgp 4200065003 vrf Vrf-tenant1
  log-neighbor-changes
  bestpath as-path multipath-relax
  timers 60 180
@@ -553,11 +551,12 @@ router bgp 4200065001 vrf Vrf-tenant1
  address-family ipv4 unicast
   redistribute connected 
   maximum-paths 16
+  maximum-paths ibgp 1
  !
  address-family l2vpn evpn
   advertise ipv4 unicast
 !
-router bgp 4200065001 vrf Vrf-tenant2
+router bgp 4200065003 vrf Vrf-tenant2
  log-neighbor-changes
  bestpath as-path multipath-relax
  timers 60 180
@@ -565,12 +564,13 @@ router bgp 4200065001 vrf Vrf-tenant2
  address-family ipv4 unicast
   redistribute connected 
   maximum-paths 16
+  maximum-paths ibgp 1
  !
  address-family l2vpn evpn
   advertise ipv4 unicast
 !
-router bgp 4200065001
- router-id 10.0.2.2
+router bgp 4200065003
+ router-id 10.0.3.2
  log-neighbor-changes
  bestpath as-path multipath-relax
  timers 60 180
@@ -618,7 +618,7 @@ router bgp 4200065001
    allowas-in 1
 !
 interface vxlan vtep1
- source-ip 10.10.10.1
+ source-ip 10.10.10.3
  map vni 100051 vlan 51
  map vni 100141 vlan 141
  map vni 103001 vlan 3001
@@ -1004,11 +1004,11 @@ policy-map oob-qos-policy type qos
  !
 !
 mclag domain 1
- source-ip 10.0.2.2
- peer-ip 10.0.2.1
+ source-ip 10.0.3.2
+ peer-ip 10.0.3.1
  peer-link PortChannel100
  mclag-system-mac 00:11:22:33:44:55
  keepalive-interval 1
  session-timeout 3
  delay-restore 90
-Leaf02# 
+Leaf04
