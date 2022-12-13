@@ -511,10 +511,6 @@ router bgp 4200065000
   address-family l2vpn evpn
    activate
  !
- peer-group SLEAF
-  timers connect 30
-  advertisement-interval 0
- !
  neighbor interface Eth1/1
   peer-group LEAF
  !
